@@ -1,0 +1,70 @@
+<h2 class="text-center">Admin Dashboard</h2>
+
+<div class="btn-group">
+  <button class="btn btn-primary" (click)="getUsers()">View FrontDesk List</button>
+  <button class="btn btn-secondary" (click)="getDoctors()">View Doctors</button>
+</div>
+
+<hr />
+
+<!-- User List -->
+<div *ngIf="users.length > 0" class="mt-4">
+  <h3>Frontdesk List</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>
+          <input type="text" [(ngModel)]="user.username" />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="user.password" />
+        </td>
+        <td>
+          <button class="btn btn-sm btn-success" (click)="updateUser(user)">Update</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="addUser()">Add New User</button>
+</div>
+
+<!-- Doctor List -->
+<div *ngIf="doctors.length > 0" class="mt-4">
+  <h3>Doctors List</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let doctor of doctors">
+        <td>{{ doctor.id }}</td>
+        <td>
+          <input type="text" [(ngModel)]="doctor.username" />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="doctor.password" />
+        </td>
+        <td>
+          <button class="btn btn-sm btn-success" (click)="updateDoctor(doctor)">Update</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteDoctor(doctor.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="addDoctor()">Add New Doctor</button>
+</div>
